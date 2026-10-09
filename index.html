@@ -12,7 +12,8 @@
       #setup code { background: #222; padding: 2px 6px; border-radius: 4px; }
       label.button, button, select { font: inherit; padding: 8px 14px; border-radius: 6px; border: 1px solid #444; background: #1d1d2b; color: inherit; cursor: pointer; }
       .bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-      canvas { width: 100%; aspect-ratio: 4 / 3; display: block; image-rendering: auto; background: #000; }
+      canvas { width: 100%; aspect-ratio: 4 / 3; display: block; background: #000; cursor: crosshair; }
+      .help { color: #999; font-size: 14px; margin-top: 6px; }
       #status { color: #f99; min-height: 1.5em; }
     </style>
   </head>
@@ -30,11 +31,11 @@
       <section id="viewer" hidden>
         <div class="bar">
           <select id="level"></select>
-          <button id="reroll">Sortear colores</button>
-          <button id="pause">Pausa</button>
+          <button id="restart">Reiniciar</button>
           <button id="forget">Olvidar archivos</button>
         </div>
         <canvas id="screen" width="800" height="600"></canvas>
+        <p class="help">Apuntá con el mouse y hacé clic para tirar. Flechas para ajustar fino (Shift = más fino), Espacio para tirar.</p>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>

@@ -17,16 +17,20 @@ Abrí http://localhost:5173 y elegí `main.pak` desde la carpeta del juego (en S
 
 - `src/formats/pak.ts`: lector del formato `.pak` de PopCap (XOR `0xF7` + tabla de archivos).
 - `src/formats/level.ts`: parser de niveles `.dat` (pegs, ladrillos, polígonos, movimientos, emisores...).
+- `src/game/game.ts`: la partida (física de la bola, choques, puntaje, turnos, balde, fever). No usa el DOM; la única entrada es el ángulo de tiro.
+- `src/game/shapes.ts`: formas de colisión de pegs, ladrillos y polígonos.
+- `src/game/constants.ts`: medidas del tablero, física y reglas.
 - `src/game/movement.ts`: posición y ángulo de los objetos móviles en el tiempo (100 ticks/s).
 - `src/game/pegs.ts`: sorteo determinista de pegs naranjas, verdes y violeta (con semilla, pensado para el online).
 - `src/assets/`: carga de imágenes (máscaras alfa `X_.gif`, JPEG 2000) y caché de los `.pak` en IndexedDB.
-- `src/render/levelScene.ts`: dibuja un nivel en canvas.
+- `src/render/gameView.ts`: dibuja la partida en canvas.
 
 ### Herramientas (Node 24+)
 
 ```bash
 node tools/extract-pak.ts <archivo.pak> <carpeta-salida>   # extrae un .pak a disco
 node tools/check-levels.ts <carpeta-con-.dat>...           # valida que todos los niveles parseen
+node tools/simulate.ts <carpeta-con-.dat> [partidas]       # juega partidas al azar para chequear la física
 ```
 
 `extracted/` y `local/` están en `.gitignore`: ahí van los archivos del juego para desarrollo, y nunca se suben.
