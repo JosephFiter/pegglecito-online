@@ -1,0 +1,9 @@
+node_modules/
+dist/
+
+# Copiado por scripts/sync-assets.mjs
+public/emulatorjs/
+
+# Tus copias de los juegos: no se versionan ni se suben
+*.nds
+PeggleNights/

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pegglecito</title>
+  <style>
+    :root {
+      --bg: #0d0b1a;
+      --fg: #f2eefc;
+      --muted: #9b93b8;
+      --accent: #ff8a1f;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font: 15px/1.4 system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      padding: 8px 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    h1 { margin: 0; font-size: 18px; color: var(--accent); letter-spacing: .02em; }
+    header span { color: var(--muted); font-size: 13px; }
+    /* La DS con las pantallas apiladas es 256x384 (2:3): llenar el alto sin pasarse del ancho.
+       EmulatorJS dimensiona el canvas según el contenedor, así que el tamaño tiene que ser explícito
+       (si depende del contenido, crece sin límite). 57px = header + margen inferior. */
+    #game {
+      --w: min(calc(100vw - 32px), calc((100dvh - 57px) * 2 / 3));
+      width: var(--w);
+      height: calc(var(--w) * 3 / 2);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pegglecito</h1>
+    <span>Peggle Dual Shot · el mouse es el lápiz</span>
+  </header>
+  <div id="game"></div>
+
+  <script>
+    EJS_player = "#game";
+    EJS_core = "nds"; // melonDS por defecto; DeSmuME queda como alternativa en el menú del emulador
+    EJS_gameName = "Peggle Dual Shot";
+    EJS_gameUrl = "game.nds";
+    EJS_pathtodata = "emulatorjs/";
+    EJS_language = "es-ES";
+    EJS_startOnLoaded = true;
+    EJS_threads = true; // requiere los headers COOP/COEP de vite.config.js
+    EJS_color = "#ff8a1f";
+  </script>
+  <script src="emulatorjs/loader.js"></script>
+</body>
+</html>
