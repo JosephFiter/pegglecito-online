@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Abrí http://localhost:5173 y elegí `main.pak` desde la carpeta del juego (en Steam: `steamapps/common/Peggle Nights/`).
+Abrí http://localhost:5280 y elegí `main.pak` desde la carpeta del juego (en Steam: `steamapps/common/Peggle Nights/`).
 
 ## Estructura
 
